@@ -3,7 +3,7 @@ version = "0.1.0"
 authors = ["word30210"]
 repository = "https://github.com/Word30210/luau-confusables"
 license = "MIT"
-includes = ["src/**", "pesde.toml", "LICENSE", "README.md"]
+includes = ["src/**", "pesde.toml", "LICENSE", "README.md", "lua_LICENSE.txt", "luau_LICENSE.txt"]
 description = "a confusable character checker"
 
 [engines]
