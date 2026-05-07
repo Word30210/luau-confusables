@@ -1,0 +1,10 @@
+# pesde packages
+*_packages
+.pesde
+
+# multitarget build output
+dist*
+
+# rbxm files
+*.rbxm
+*.lock.rbxm
