@@ -1,7 +1,7 @@
 --!optimize 2
 --!nocheck
 
-const CONFUSABLES: { number | string } = {
+local CONFUSABLES: { number | string } = {
     {34, "\""},      -- MA#* ( " → '' ) QUOTATION MARK → APOSTROPHE, APOSTROPHE# # Converted to a quote.
     {48, "O"},       -- MA# ( 0 → O ) DIGIT ZERO → LATIN CAPITAL LETTER O#
     {49, "l"},       -- MA# ( 1 → l ) DIGIT ONE → LATIN SMALL LETTER L#
@@ -1790,15 +1790,15 @@ const CONFUSABLES: { number | string } = {
     {128876, "VB"},  -- MA#* ( 🝬 → VB ) ALCHEMICAL SYMBOL FOR BATH OF VAPOURS → LATIN CAPITAL LETTER V, LATIN CAPITAL LETTER B#
 } :: { number | string }
 
-const NUMBER_OF_CONFUSABLES = #CONFUSABLES
+local NUMBER_OF_CONFUSABLES = #CONFUSABLES
 
-const function lower_bound(value: number): number
+local function lower_bound(value: number): number
     local low = 1
     local high = NUMBER_OF_CONFUSABLES
     local result = high + 1
 
     while low <= high do
-        const mid = math.floor((low + high) / 2)
+        local mid = math.floor((low + high) / 2)
 
         if ((CONFUSABLES :: any)[mid][1] :: number) < value then
             low = mid + 1
@@ -1812,7 +1812,7 @@ const function lower_bound(value: number): number
 end
 
 return function(codepoint: number): string?
-    const index = lower_bound(codepoint)
+    local index = lower_bound(codepoint)
 
     if index <= NUMBER_OF_CONFUSABLES and ((CONFUSABLES :: any)[index][1] :: number) == codepoint then
         return (CONFUSABLES :: any)[index][2] :: string
